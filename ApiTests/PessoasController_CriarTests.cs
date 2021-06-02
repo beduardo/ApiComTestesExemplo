@@ -106,7 +106,7 @@ namespace ApiTests
             };
 
             var mockServico = new Mock<IApiServico>();
-            var controller = new PessoaslController(mockServico.Object);
+            var controller = new PessoasController(mockServico.Object);
 
             mockServico.Setup(m => m.CriarPessoa(It.IsAny<PessoaModel>()))
                 .Throws(new Exception("Mensagem de Erro"));

@@ -6,10 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 namespace Api.Controllers
 {
     [Route("pessoas")]
-    public class PessoaslController : Controller
+    public class PessoasController : Controller
     {
         private readonly IApiServico servico;
-        public PessoaslController(IApiServico servico)
+        public PessoasController(IApiServico servico)
         {
             this.servico = servico;
         }

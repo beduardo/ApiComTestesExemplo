@@ -2,5 +2,8 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f005d353_002D43ec_002D41b3_002D8e19_002D64de805d6201/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Criar_RespondeOK" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;MSTest::0CAD0853-0183-4217-B563-35EC6A00C162::net5.0::ApiTests.PessoasController_CriarTests&lt;/TestId&gt;
+    &lt;TestId&gt;MSTest::0CAD0853-0183-4217-B563-35EC6A00C162::net5.0::ApiTests.AdministracaoControllerTests.Estatisticas_AcessoAnonimo_RecebeNaoPermitido&lt;/TestId&gt;
+    &lt;TestId&gt;MSTest::0CAD0853-0183-4217-B563-35EC6A00C162::net5.0::ApiTests.AdministracaoControllerTests.Estatisticas_AcessoLogado_RecebeOk&lt;/TestId&gt;
+    &lt;TestId&gt;MSTest::0CAD0853-0183-4217-B563-35EC6A00C162::net5.0::ApiTests.AdministracaoControllerTests&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
