@@ -5,5 +5,8 @@
     &lt;TestId&gt;MSTest::0CAD0853-0183-4217-B563-35EC6A00C162::net5.0::ApiTests.AdministracaoControllerTests.Estatisticas_AcessoAnonimo_RecebeNaoPermitido&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;MSTest::0CAD0853-0183-4217-B563-35EC6A00C162::net5.0::ApiTests.AdministracaoControllerTests.Estatisticas_AcessoLogado_RecebeOk&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;MSTest::0CAD0853-0183-4217-B563-35EC6A00C162::net5.0::ApiTests.AdministracaoControllerTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::0CAD0853-0183-4217-B563-35EC6A00C162::net5.0::ApiTests.PessoasController_ListarTests.Lista_RespondeOKObjectResult&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::0CAD0853-0183-4217-B563-35EC6A00C162::net5.0::ApiTests.PessoasController_ListarTests.Lista_RespondeResultadoCorreto&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::0CAD0853-0183-4217-B563-35EC6A00C162::net5.0::ApiTests.PessoasController_ListarTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

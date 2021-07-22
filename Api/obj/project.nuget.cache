@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "uL+XJmGlATnr8ubIvKW+T3q3gQNwJNBUH+TRQ/qGYC7Io9y2F4Y7MIZTSJBA0HsWiB6eVqEmb/9rLHXtfjcXnQ==",
+  "dgSpecHash": "amq2jRYWzxF0qXwdWzd93DG8InqZjyYo4644BVY/s0s/5w9LWWlkJJaZK7pFScPixVli3YsQKue2jSdPuLHaoQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\bruno.vieira\\Documents\\Guilda Testes e Containers\\exemplo\\Api\\Api.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\bruno.vieira\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\bruno.vieira\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\bruno.vieira\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.4\\microsoft.aspnetcore.authentication.jwtbearer.5.0.4.nupkg.sha512",
     "C:\\Users\\bruno.vieira\\.nuget\\packages\\microsoft.aspnetcore.authentication.openidconnect\\5.0.4\\microsoft.aspnetcore.authentication.openidconnect.5.0.4.nupkg.sha512",
@@ -39,6 +40,7 @@
     "C:\\Users\\bruno.vieira\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
     "C:\\Users\\bruno.vieira\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.1\\system.diagnostics.diagnosticsource.5.0.1.nupkg.sha512",
     "C:\\Users\\bruno.vieira\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.7.1\\system.identitymodel.tokens.jwt.6.7.1.nupkg.sha512",
+    "C:\\Users\\bruno.vieira\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
     "C:\\Users\\bruno.vieira\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.6.0\\system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512",
     "C:\\Users\\bruno.vieira\\.nuget\\packages\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512"
   ],

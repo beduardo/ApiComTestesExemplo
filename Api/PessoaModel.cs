@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using Microsoft.VisualBasic.CompilerServices;
+
 namespace Api
 {
     public class PessoaModel

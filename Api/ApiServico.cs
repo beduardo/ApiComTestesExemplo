@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using Api.Migrations;
 using System.Linq;
+using AutoMapper;
+
 namespace Api
 {
     public interface IApiServico
@@ -12,18 +14,17 @@ namespace Api
     public class ApiServico : IApiServico
     {
         private readonly ApiContext contexto;
+        private readonly IMapper mapper;
 
-        public ApiServico(ApiContext contexto)
+        public ApiServico(ApiContext contexto, IMapper mapper)
         {
             this.contexto = contexto;
+            this.mapper = mapper;
         }
 
         public string CriarPessoa(PessoaModel model)
         {
-            var entidade = new PessoaEntidade
-            {
-                Nome = model.Nome
-            };
+            var entidade = mapper.Map<PessoaEntidade>(model);
 
             contexto.Pessoas.Add(entidade);
             contexto.SaveChanges();
@@ -33,14 +34,9 @@ namespace Api
 
         public IEnumerable<PessoaModel> ListarPessoas()
         {
-            var retorno = from p in contexto.Pessoas
-                select new PessoaModel
-                {
-                    Id = p.Id.ToString(),
-                    Nome = p.Nome
-                };
-
-            return retorno.ToList();
+            var entidades = contexto.Pessoas.ToList();
+            var retorno = mapper.Map<IEnumerable<PessoaModel>>(entidades);
+            return retorno;
         }
     }
 }

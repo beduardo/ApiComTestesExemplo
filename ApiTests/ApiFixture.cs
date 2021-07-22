@@ -7,6 +7,8 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Api;
+using AutoMapper;
+using Bogus;
 using FluentAssertions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Hosting;
@@ -25,6 +27,12 @@ namespace ApiTests
     public class ApiFixture : WebApplicationFactory<Startup>
     {
         public readonly HttpClient client;
+        public readonly Faker faker;
+        public readonly Faker<PessoaEntidade> fakerPessoaEntidade;
+        public readonly Faker<PessoaModel> fakerPessoaModel;
+        public readonly IMapper mapper;
+        
+        
         protected DbConnection conexaoSqlite { get; set; }
         protected ServiceProvider serviceProvider { get; set; }
 
@@ -34,6 +42,17 @@ namespace ApiTests
             {
                 AllowAutoRedirect = false
             });
+
+            faker = new Faker();
+            fakerPessoaEntidade = PessoaEntidadeFaker();
+            fakerPessoaModel = PessoaModelFaker();
+            
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new PessoaMapper());
+            });
+
+            mapper = mappingConfig.CreateMapper();
         }
         
         public StringContent ConvertToRawJson(object obj)
@@ -99,7 +118,25 @@ namespace ApiTests
                 .Options;
             return new ApiContext(options);
         }
-        
+
+        private Faker<PessoaModel> PessoaModelFaker()
+        {
+            var faker = new Faker<PessoaModel>();
+            faker.RuleFor(m => m.Nome, f => f.Person.FullName);
+            
+            return faker;
+        }
+
+        private Faker<PessoaEntidade> PessoaEntidadeFaker()
+        {
+            var faker = new Faker<PessoaEntidade>();
+            faker.RuleFor(m => m.Id, f => Guid.NewGuid());
+            faker.RuleFor(m => m.Nome, f => f.Person.FullName);
+            
+            return faker;
+        }
+
+
         public dynamic CreateTokenObject(string subjectId, string email, string[] role = null)
         {
             dynamic tokenobj = new ExpandoObject();

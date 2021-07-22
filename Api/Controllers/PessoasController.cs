@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -9,11 +10,12 @@ namespace Api.Controllers
     public class PessoasController : Controller
     {
         private readonly IApiServico servico;
+
         public PessoasController(IApiServico servico)
         {
             this.servico = servico;
         }
-        
+
         [HttpPost]
         public IActionResult Criar([FromBody] PessoaModel model)
         {
@@ -33,18 +35,22 @@ namespace Api.Controllers
                 });
             }
         }
-        
+
         [HttpGet]
         public IActionResult Listar()
         {
             try
             {
                 var pessoas = servico.ListarPessoas();
-                return Ok(pessoas);
+
+                return Ok(new RespostaApi<IEnumerable<PessoaModel>>
+                {
+                    dados = pessoas
+                });
             }
             catch (Exception e)
             {
-                return Ok(new RespostaApi<PessoaModel>
+                return Ok(new RespostaApi<IEnumerable<PessoaModel>>
                 {
                     erro = true,
                     mensagem = e.Message

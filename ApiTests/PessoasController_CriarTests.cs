@@ -23,10 +23,7 @@ namespace ApiTests
         public async Task Criar_RespondeCreated()
         {
             var fixture = new ApiFixture();
-            var model = new PessoaModel
-            {
-                Nome = "Bruno"
-            };
+            var model = fixture.fakerPessoaModel.Generate();
 
             var content = fixture.ConvertToRawJson(model);
             var resp = await fixture.client.PostAsync(url, content);
@@ -38,10 +35,7 @@ namespace ApiTests
         public async Task Criar_InserePessoaNoBanco()
         {
             var fixture = new ApiFixture();
-            var model = new PessoaModel
-            {
-                Nome = "Bruno"
-            };
+            var model = fixture.fakerPessoaModel.Generate();
 
             var content = fixture.ConvertToRawJson(model);
             await fixture.client.PostAsync(url, content);
@@ -58,10 +52,7 @@ namespace ApiTests
         public async Task Criar_InserePessoaNoBancoComNovoId()
         {
             var fixture = new ApiFixture();
-            var model = new PessoaModel
-            {
-                Nome = "Bruno"
-            };
+            var model = fixture.fakerPessoaModel.Generate();
 
             var content = fixture.ConvertToRawJson(model);
             await fixture.client.PostAsync(url, content);
@@ -77,33 +68,27 @@ namespace ApiTests
         public async Task Criar_RetornaPessoaComId()
         {
             var fixture = new ApiFixture();
-            var model = new PessoaModel
-            {
-                Nome = "Bruno"
-            };
+            var model = fixture.fakerPessoaModel.Generate();
 
             var content = fixture.ConvertToRawJson(model);
             var resp = await fixture.client.PostAsync(url, content);
             
-            string responseHtml = await resp.Content.ReadAsStringAsync();
-            var resposta = JsonConvert.DeserializeObject<PessoaModel>(responseHtml);
+            string responseJson = await resp.Content.ReadAsStringAsync();
+            var resposta = JsonConvert.DeserializeObject<PessoaModel>(responseJson);
             
             var contexto = fixture.CriarNovoContexto();
             var pessoa = contexto.Pessoas.FirstOrDefault();
             
             //Guard
             Assert.IsNotNull(pessoa);
-            
             Assert.AreEqual(pessoa.Id.ToString(), resposta.Id);
         }
 
         [TestMethod]
-        public async Task Criar_ServiceGeraException_RetornaMensagem()
+        public void Criar_ServiceGeraException_RetornaMensagem()
         {
-            var model = new PessoaModel
-            {
-                Nome = "Bruno"
-            };
+            var fixture = new ApiFixture();
+            var model = fixture.fakerPessoaModel.Generate();
 
             var mockServico = new Mock<IApiServico>();
             var controller = new PessoasController(mockServico.Object);
