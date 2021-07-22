@@ -1,14 +1,16 @@
 using System.Collections.Generic;
 using Api.Migrations;
 using System.Linq;
+using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace Api
 {
     public interface IApiServico
     {
-        string CriarPessoa(PessoaModel model);
-        IEnumerable<PessoaModel> ListarPessoas();
+        Task<string> CriarPessoa(PessoaModel model);
+        Task<IEnumerable<PessoaModel>> ListarPessoas();
     }
 
     public class ApiServico : IApiServico
@@ -22,19 +24,19 @@ namespace Api
             this.mapper = mapper;
         }
 
-        public string CriarPessoa(PessoaModel model)
+        public async Task<string> CriarPessoa(PessoaModel model)
         {
             var entidade = mapper.Map<PessoaEntidade>(model);
 
-            contexto.Pessoas.Add(entidade);
-            contexto.SaveChanges();
+            await contexto.Pessoas.AddAsync(entidade);
+            await contexto.SaveChangesAsync();
             
             return entidade.Id.ToString();
         }
 
-        public IEnumerable<PessoaModel> ListarPessoas()
+        public async Task<IEnumerable<PessoaModel>> ListarPessoas()
         {
-            var entidades = contexto.Pessoas.ToList();
+            var entidades = await contexto.Pessoas.ToListAsync();
             var retorno = mapper.Map<IEnumerable<PessoaModel>>(entidades);
             return retorno;
         }

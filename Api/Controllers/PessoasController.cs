@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,11 +18,11 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Criar([FromBody] PessoaModel model)
+        public async Task<IActionResult> Criar([FromBody] PessoaModel model)
         {
             try
             {
-                var id = servico.CriarPessoa(model);
+                var id = await servico.CriarPessoa(model);
 
                 model.Id = id;
                 return Created("/pessoas", model);
@@ -37,11 +38,11 @@ namespace Api.Controllers
         }
 
         [HttpGet]
-        public IActionResult Listar()
+        public async Task<IActionResult> Listar()
         {
             try
             {
-                var pessoas = servico.ListarPessoas();
+                var pessoas = await servico.ListarPessoas();
 
                 return Ok(new RespostaApi<IEnumerable<PessoaModel>>
                 {

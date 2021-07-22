@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Net;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Api;
@@ -85,7 +86,7 @@ namespace ApiTests
         }
 
         [TestMethod]
-        public void Criar_ServiceGeraException_RetornaMensagem()
+        public async Task Criar_ServiceGeraException_RetornaMensagem()
         {
             var fixture = new ApiFixture();
             var model = fixture.fakerPessoaModel.Generate();
@@ -96,7 +97,7 @@ namespace ApiTests
             mockServico.Setup(m => m.CriarPessoa(It.IsAny<PessoaModel>()))
                 .Throws(new Exception("Mensagem de Erro"));
 
-            var respAction = controller.Criar(model);
+            var respAction = await controller.Criar(model);
             var CreateResult = (OkObjectResult) respAction;
             var resposta = CreateResult.Value as RespostaApi<PessoaModel>;
             
