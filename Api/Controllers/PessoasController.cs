@@ -33,5 +33,23 @@ namespace Api.Controllers
                 });
             }
         }
+        
+        [HttpGet]
+        public IActionResult Listar()
+        {
+            try
+            {
+                var pessoas = servico.ListarPessoas();
+                return Ok(pessoas);
+            }
+            catch (Exception e)
+            {
+                return Ok(new RespostaApi<PessoaModel>
+                {
+                    erro = true,
+                    mensagem = e.Message
+                });
+            }
+        }
     }
 }

@@ -1,10 +1,12 @@
+using System.Collections.Generic;
 using Api.Migrations;
-
+using System.Linq;
 namespace Api
 {
     public interface IApiServico
     {
         string CriarPessoa(PessoaModel model);
+        IEnumerable<PessoaModel> ListarPessoas();
     }
 
     public class ApiServico : IApiServico
@@ -27,6 +29,18 @@ namespace Api
             contexto.SaveChanges();
             
             return entidade.Id.ToString();
+        }
+
+        public IEnumerable<PessoaModel> ListarPessoas()
+        {
+            var retorno = from p in contexto.Pessoas
+                select new PessoaModel
+                {
+                    Id = p.Id.ToString(),
+                    Nome = p.Nome
+                };
+
+            return retorno.ToList();
         }
     }
 }

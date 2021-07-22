@@ -29,8 +29,10 @@ namespace Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var strconnection = Configuration.GetConnectionString("guildadb");
+            
             services.AddDbContext<ApiContext>(opt =>
-                opt.UseNpgsql("User ID=postgres;Password=mysecretpassword;Host=localhost;Port=5432;Database=myDataBase;")
+                opt.UseNpgsql(strconnection)
                 );
 
             services.AddScoped<IApiServico, ApiServico>();
